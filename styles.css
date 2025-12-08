@@ -68,6 +68,7 @@ table td {
   padding: 15px;
   border-radius: 8px;
   color: var(--azul);
+<<<<<<< HEAD
   font-weight: bold;
 }
 
@@ -77,6 +78,57 @@ footer {
   color: var(--blanco);
   text-align: center;
   padding: 10px;
+=======
+}
+
+/* Ajustes generales para pantallas pequeñas */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px; /* texto más pequeño */
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  table {
+    width: 100%;
+    font-size: 12px;
+    border-collapse: collapse;
+  }
+
+  table th, table td {
+    padding: 6px;
+    text-align: center;
+  }
+
+  .contenedor {
+    flex-direction: column; /* apila elementos en lugar de ponerlos en fila */
+    align-items: center;
+  }
+}
+
+/* Encabezado principal */
+header {
+  background: linear-gradient(135deg, #0033A0, #00AEC7);
+  color: #FFFFFF;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+header h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-family: 'Nunito', sans-serif;
+  font-size: 18px;
+  margin: 0;
+>>>>>>> 9f5ed1d26400fa278279c86cbb4058bee7f814ff
 }
 
 /* Responsivo para móviles */
@@ -92,6 +144,7 @@ footer {
   header p {
     font-size: 14px;
   }
+<<<<<<< HEAD
 
   table th, table td {
     font-size: 12px;
@@ -102,3 +155,6 @@ footer {
     font-size: 14px;
   }
 }
+=======
+}
+>>>>>>> 9f5ed1d26400fa278279c86cbb4058bee7f814ff
