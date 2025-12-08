@@ -17,7 +17,7 @@ body {
   color: var(--azul);
 }
 
-/* Encabezado */
+/* Encabezado (sin cambios) */
 header {
   background: linear-gradient(135deg, var(--azul), var(--turquesa));
   color: var(--blanco);
@@ -78,6 +78,7 @@ header .destacar {
   display: flex;
   justify-content: center;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .imagenes-navidad img {
@@ -87,15 +88,18 @@ header .destacar {
   border-radius: 12px;
 }
 
-/* Tabla de ahorro */
+/* Fondo de la sección de la tabla: celeste ocupando toda la pantalla */
 .tabla-ahorro {
-  padding: 20px;
-  max-width: 800px;
-  margin: 0 auto;
+  padding: 40px 20px;
+  max-width: 100%;
+  margin: 0;
+  background-color: var(--celeste);
 }
 
+/* Tabla */
 table {
-  width: 100%;
+  width: 90%;
+  margin: 0 auto;
   border-collapse: collapse;
   background-color: var(--gris-claro);
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -121,10 +125,8 @@ table tbody tr:hover {
   background-color: #d0ecf7;
 }
 
-/* Resumen final sobre fondo azul */
+/* Resumen final: cajas azul oscuro */
 .resumen {
-  background-color: var(--azul);
-  padding: 40px 20px;
   margin-top: 30px;
   display: flex;
   flex-wrap: wrap;
@@ -133,11 +135,11 @@ table tbody tr:hover {
 }
 
 .resumen .dato {
-  background-color: var(--blanco);
-  color: var(--azul);
+  background-color: var(--azul); /* vuelve al azul oscuro */
+  color: var(--blanco);
   padding: 20px 25px;
   border-radius: 12px;
-  min-width: 220px;
+  min-width: 200px;
   text-align: center;
   font-size: 18px;
   font-weight: 800;
@@ -180,12 +182,12 @@ footer {
   }
 
   .imagenes-navidad {
-    flex-direction: column;
+    flex-direction: row;
     gap: 10px;
   }
 
   .imagenes-navidad img {
-    max-width: 180px;
+    max-width: 45%;
   }
 
   table th, table td {
@@ -194,14 +196,12 @@ footer {
   }
 
   .resumen {
-    flex-direction: column;
-    align-items: center;
-    padding: 30px 15px;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 
   .resumen .dato {
-    width: 100%;
-    max-width: 320px;
+    flex: 1 1 45%;
     font-size: 16px;
   }
 
