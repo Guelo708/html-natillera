@@ -126,3 +126,32 @@ footer {
   font-size: 0.85rem;
   color: var(--azul);
 }
+
+/* Ajustes generales para pantallas pequeñas */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px; /* texto más pequeño */
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  table {
+    width: 100%;
+    font-size: 12px;
+    border-collapse: collapse;
+  }
+
+  table th, table td {
+    padding: 6px;
+    text-align: center;
+  }
+
+  .contenedor {
+    flex-direction: column; /* apila elementos en lugar de ponerlos en fila */
+    align-items: center;
+  }
+}
