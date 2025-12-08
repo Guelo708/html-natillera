@@ -6,6 +6,7 @@
   --blanco: #FFFFFF;
   --amarillo-claro: #FFE946;
   --celeste: #4EC3E0;
+  --gris-claro: #F5F5F5;
 }
 
 /* Estilos generales */
@@ -23,16 +24,15 @@ header {
   text-align: center;
   padding: 40px 20px;
   position: relative;
-  overflow: hidden; /* necesario para la nieve */
+  overflow: hidden;
 }
 
-/* Nieve con imagen */
 header::before {
   content: "";
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background-image: url("/snowflakes.png"); /* imagen transparente de copos */
+  background-image: url("snowflakes.png");
   background-repeat: repeat;
   animation: nieve 20s linear infinite;
   opacity: 0.3;
@@ -43,7 +43,6 @@ header::before {
   to { background-position: 0 1000px; }
 }
 
-/* Título */
 .titulo-amarillo {
   font-family: 'Poppins', sans-serif;
   font-size: 32px;
@@ -62,14 +61,12 @@ header .destacar {
   font-weight: bold;
 }
 
-/* Nombre integrado y resaltado */
 .nombre {
-  color: var(--blanco);       /* mismo color que la frase */
-  font-weight: 700;           /* más grueso */
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.4); /* sombra ligera */
+  color: var(--blanco);
+  font-weight: 700;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
 }
 
-/* Mensaje navideño */
 .mensaje-navidad {
   margin-top: 20px;
   font-size: 18px;
@@ -93,32 +90,66 @@ header .destacar {
 /* Tabla de ahorro */
 .tabla-ahorro {
   padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 20px;
+  background-color: var(--gris-claro);
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-table th {
+table thead {
   background-color: var(--azul);
   color: var(--blanco);
-  padding: 10px;
 }
 
-table td {
+table th, table td {
+  padding: 12px;
   border: 1px solid var(--celeste);
-  padding: 8px;
   text-align: center;
+  font-size: 16px;
 }
 
+table tbody tr:nth-child(even) {
+  background-color: #eaf6fc;
+}
+
+table tbody tr:hover {
+  background-color: #d0ecf7;
+}
+
+/* Resumen final sobre fondo azul */
 .resumen {
-  background-color: var(--celeste);
-  padding: 15px;
-  border-radius: 8px;
+  background-color: var(--azul);
+  padding: 40px 20px;
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.resumen .dato {
+  background-color: var(--blanco);
   color: var(--azul);
-  font-weight: bold;
+  padding: 20px 25px;
+  border-radius: 12px;
+  min-width: 220px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 800;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+}
+
+/* Última caja diferenciada en amarillo */
+.resumen .dato.total-ahorro {
+  background-color: var(--amarillo-claro);
+  color: var(--azul);
+  font-size: 20px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.18);
 }
 
 /* Pie de página */
@@ -140,7 +171,8 @@ footer {
   }
 
   header p {
-    font-size: 14px;
+    font-size: 16px;
+    line-height: 1.4;
   }
 
   .mensaje-navidad {
@@ -157,15 +189,32 @@ footer {
   }
 
   table th, table td {
-    font-size: 12px;
-    padding: 6px;
+    font-size: 14px;
+    padding: 8px;
   }
 
   .resumen {
-    font-size: 14px;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 15px;
+  }
+
+  .resumen .dato {
+    width: 100%;
+    max-width: 320px;
+    font-size: 16px;
+  }
+
+  .resumen .dato.total-ahorro {
+    font-size: 18px;
   }
 
   .nombre {
-    font-size: 18px; /* ajusta tamaño en móvil */
+    font-size: 18px;
+  }
+
+  a, button {
+    padding: 12px 18px;
+    font-size: 16px;
   }
 }
