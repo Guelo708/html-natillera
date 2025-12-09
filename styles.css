@@ -161,6 +161,12 @@ tbody tr:hover { background-color: #d0ecf7; }
   font-weight: 800;
   box-shadow: 0 4px 8px rgba(0,0,0,0.18);
   flex: 1 1 220px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* animación hover */
+}
+
+.resumen .dato:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.25);
 }
 
 .resumen .dato.total-ahorro {
@@ -179,12 +185,24 @@ footer {
   margin-top: auto;
   position: relative;
   z-index: 1;
-
-  width: 100%;   /* asegura que ocupe todo el ancho */
+  width: 100%;
   left: 0;
   right: 0;
+
+  animation: aparecerFooter 1.2s ease-out; /* animación de entrada */
 }
-  
+
+@keyframes aparecerFooter {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Responsivo */
 @media (max-width: 768px) {
   .imagenes-navidad img { width: 45%; }
