@@ -179,8 +179,12 @@ footer {
   margin-top: auto;
   position: relative;
   z-index: 1;
-}
 
+  width: 100%;   /* asegura que ocupe todo el ancho */
+  left: 0;
+  right: 0;
+}
+  
 /* Responsivo */
 @media (max-width: 768px) {
   .imagenes-navidad img { width: 45%; }
