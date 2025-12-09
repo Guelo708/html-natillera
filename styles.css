@@ -8,19 +8,17 @@
   --gris-claro: #F5F5F5;
 }
 
-/* Fondo global: gradiente corrido (turquesa a la derecha) + nieve */
+/* Fondo global: gradiente + nieve */
 html, body {
   min-height: 100%;
   margin: 0;
 }
 
 html {
-  background: linear-gradient(
-    to right,
-    var(--azul) 0%,
-    var(--azul) 55%,
-    var(--turquesa) 100%
-  );
+  background: linear-gradient(to right, var(--azul), var(--turquesa));
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover; /* asegura que cubra todo el viewport */
 }
 
 body {
@@ -76,7 +74,7 @@ header {
   text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
 }
 
-/* Imágenes decorativas siempre lado a lado */
+/* Imágenes decorativas */
 .imagenes-navidad {
   margin-top: 16px;
   display: flex;
@@ -102,14 +100,14 @@ header {
   margin: 0 auto;
 }
 
-/* Contenedor responsivo */
+/* Contenedor */
 .table-wrapper {
   border-radius: 12px;
   padding: 8px;
   background-color: rgba(255, 255, 255, 0.08);
 }
 
-/* Tabla ajustada al ancho del móvil */
+/* Tabla */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -137,7 +135,7 @@ th, td {
   font-size: 14px;
   color: var(--azul);
   word-wrap: break-word;
-  white-space: normal; /* permite que el texto se ajuste */
+  white-space: normal; /* permite que el texto se parta */
 }
 
 tbody tr:nth-child(even) { background-color: #eaf6fc; }
