@@ -9,14 +9,21 @@
 }
 
 /* Fondo global: gradiente corrido (turquesa a la derecha) + nieve */
+html, body {
+  min-height: 100%;
+  margin: 0;
+}
+
 html {
-  height: 100%;
-  background: linear-gradient(90deg, var(--azul) 0%, var(--azul) 60%, var(--turquesa) 100%);
+  background: linear-gradient(
+    to right,
+    var(--azul) 0%,
+    var(--azul) 55%,
+    var(--turquesa) 100%
+  );
 }
 
 body {
-  min-height: 100%;
-  margin: 0;
   color: var(--blanco);
   font-family: 'Nunito', sans-serif;
   position: relative;
@@ -75,11 +82,11 @@ header {
   display: flex;
   justify-content: center;
   gap: 12px;
-  flex-wrap: nowrap; /* evita que se apilen */
+  flex-wrap: nowrap;
 }
 
 .imagenes-navidad img {
-  width: 45%; /* cada imagen ocupa casi la mitad */
+  width: 45%;
   height: auto;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.12);
@@ -97,14 +104,12 @@ header {
 
 /* Contenedor responsivo */
 .table-wrapper {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
   border-radius: 12px;
   padding: 8px;
   background-color: rgba(255, 255, 255, 0.08);
 }
 
-/* Tabla ajustada al ancho del móvil (sin scroll) */
+/* Tabla ajustada al ancho del móvil */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -123,17 +128,16 @@ thead th {
   font-weight: 700;
   font-size: clamp(14px, 2.8vw, 16px);
   padding: clamp(10px, 2.5vw, 12px);
-  white-space: nowrap;
 }
 
 th, td {
-  padding: clamp(8px, 2vw, 12px);
+  padding: 10px;
   border: 1px solid var(--celeste);
   text-align: center;
-  font-size: clamp(12px, 3vw, 14px);
+  font-size: 14px;
   color: var(--azul);
-  word-wrap: break-word; /* permite cortes dentro de palabras largas */
-  white-space: normal;   /* evita una sola línea rígida */
+  word-wrap: break-word;
+  white-space: normal; /* permite que el texto se ajuste */
 }
 
 tbody tr:nth-child(even) { background-color: #eaf6fc; }
@@ -182,7 +186,7 @@ footer {
 /* Responsivo */
 @media (max-width: 768px) {
   .imagenes-navidad img { width: 45%; }
-  th, td { font-size: 14px; padding: 8px; }
+  th, td { font-size: 13px; padding: 6px; }
   .resumen .dato { flex: 1 1 48%; font-size: 16px; }
   .resumen .dato.total-ahorro { font-size: 18px; }
 }
