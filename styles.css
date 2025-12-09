@@ -1,7 +1,6 @@
 /* Paleta de colores */
 :root {
   --azul: #0033A0;
-  --amarillo: #E3E829;
   --turquesa: #00AEC7;
   --blanco: #FFFFFF;
   --amarillo-claro: #FFE946;
@@ -9,57 +8,60 @@
   --gris-claro: #F5F5F5;
 }
 
-/* Estilos generales */
+/* Fondo global: gradiente + nieve en toda la página (excepto footer por contraste) */
+html {
+  height: 100%;
+  background: linear-gradient(88deg, var(--azul), var(--turquesa));
+}
+
 body {
-  font-family: 'Nunito', sans-serif;
+  min-height: 100%;
   margin: 0;
-  background-color: var(--blanco);
-  color: var(--azul);
-}
-
-/* Encabezado (sin cambios) */
-header {
-  background: linear-gradient(135deg, var(--azul), var(--turquesa));
   color: var(--blanco);
-  text-align: center;
-  padding: 40px 20px;
+  font-family: 'Nunito', sans-serif;
   position: relative;
-  overflow: hidden;
 }
 
-header::before {
+body::before {
   content: "";
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  position: fixed;
+  inset: 0;
   background-image: url("snowflakes.png");
   background-repeat: repeat;
   animation: nieve 20s linear infinite;
-  opacity: 0.3;
+  opacity: 0.30;
+  pointer-events: none;
+  z-index: -1;
 }
 
 @keyframes nieve {
   from { background-position: 0 0; }
-  to { background-position: 0 1000px; }
+  to   { background-position: 0 1000px; }
+}
+
+/* Encabezado */
+header {
+  text-align: center;
+  padding: clamp(24px, 6vw, 40px) clamp(12px, 4vw, 20px);
+  position: relative;
+  z-index: 1; /* sobre la nieve */
 }
 
 .titulo-amarillo {
   font-family: 'Poppins', sans-serif;
-  font-size: 32px;
+  font: size 32px;;
   color: var(--amarillo-claro);
   margin-bottom: 15px;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
 }
 
-header p {
-  font-size: 18px;
-  margin: 8px 0;
+.mensaje-navidad p {
+  font-size: clamp(14px, 3.8vw, 18px);
+  line-height: 1.45;
+  margin: 6px 0;
 }
 
-header .destacar {
-  color: var(--amarillo-claro);
-  font-weight: bold;
-}
+.destacar { color: var(--amarillo-claro); font-weight: 700; }
 
 .nombre {
   color: var(--blanco);
@@ -67,154 +69,118 @@ header .destacar {
   text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
 }
 
-.mensaje-navidad {
-  margin-top: 20px;
-  font-size: 18px;
-}
-
-/* Imágenes decorativas lado a lado */
+/* Imágenes decorativas lado a lado y responsivas */
 .imagenes-navidad {
-  margin-top: 20px;
+  margin-top: 16px;
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: clamp(8px, 3vw, 20px);
   flex-wrap: wrap;
 }
 
 .imagenes-navidad img {
-  max-width: 220px;
-  width: 100%;
+  width: clamp(150px, 42vw, 240px);
   height: auto;
   border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
 }
 
-/* Fondo de la sección de la tabla: celeste ocupando toda la pantalla */
+/* Sección de la tabla (usa el fondo global; sin fondo celeste sólido) */
 .tabla-ahorro {
-  padding: 40px 20px;
-  max-width: 100%;
-  margin: 0;
-  background-color: var(--celeste);
+  position: relative;
+  z-index: 1;
+  padding: clamp(20px, 5vw, 40px) clamp(12px, 4vw, 20px);
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Contenedor responsivo con scroll horizontal en móvil */
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 12px;
+  padding: 8px;
+  background-color: rgba(255, 255, 255, 0.08); /* velo suave para legibilidad */
 }
 
 /* Tabla */
 table {
-  width: 90%;
-  margin: 0 auto;
+  width: 100%;
   border-collapse: collapse;
   background-color: var(--gris-claro);
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  overflow: hidden; /* muestra el redondeo */
+  box-shadow: 0 0 12px rgba(0,0,0,0.18);
 }
 
-table thead {
+thead {
   background-color: var(--azul);
+}
+
+thead th {
   color: var(--blanco);
+  font-weight: 700;
+  font-size: clamp(14px, 2.8vw, 16px);
+  padding: clamp(10px, 2.5vw, 12px);
+  white-space: nowrap;
 }
 
-table th, table td {
-  padding: 12px;
-  border: 1px solid var(--celeste);
+th, td {
+  padding: clamp(10px, 2.5vw, 12px);
+  border: 2px solid var(--celeste);
   text-align: center;
-  font-size: 16px;
+  font-size: clamp(12px, 3.2vw, 16px);
+  color: var(--azul); /* buen contraste sobre gris */
+  white-space: nowrap; /* evita saltos feos; el wrapper hace scroll */
 }
 
-table tbody tr:nth-child(even) {
-  background-color: #eaf6fc;
-}
+tbody tr:nth-child(even) { background-color: #eaf6fc; }
+tbody tr:hover { background-color: #d0ecf7; }
 
-table tbody tr:hover {
-  background-color: #d0ecf7;
-}
-
-/* Resumen final: cajas azul oscuro */
+/* Resumen final: cajas una al lado de la otra; última en amarillo */
 .resumen {
-  margin-top: 30px;
+  margin-top: clamp(16px, 4vw, 24px);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
+  gap: clamp(10px, 3vw, 20px);
 }
 
 .resumen .dato {
-  background-color: var(--azul); /* vuelve al azul oscuro */
-  color: var(--blanco);
-  padding: 20px 25px;
+  background-color: var(--blanco); /* azul semitransparente para integrarse con el fondo */
+  color: var(--azul);
+  padding: clamp(14px, 3.5vw, 20px) clamp(16px, 4vw, 25px);
   border-radius: 12px;
-  min-width: 200px;
+  min-width: 220px;
   text-align: center;
-  font-size: 18px;
+  font-size: clamp(14px, 3.8vw, 18px);
   font-weight: 800;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.18);
+  flex: 1 1 220px; /* lado a lado y permite wrap */
 }
 
-/* Última caja diferenciada en amarillo */
 .resumen .dato.total-ahorro {
   background-color: var(--amarillo-claro);
   color: var(--azul);
-  font-size: 20px;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.18);
+  font-size: clamp(16px, 4.2vw, 20px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.20);
 }
 
-/* Pie de página */
+/* Footer separado (sin nieve, fondo sólido) */
 footer {
   background-color: var(--azul);
   color: var(--blanco);
   text-align: center;
-  padding: 10px;
+  padding: 12px;
+  margin-top: auto;
+  position: relative;
+  z-index: 1;
 }
 
-/* Responsivo para móviles */
+/* Ajustes extra en móviles */
 @media (max-width: 768px) {
-  header {
-    padding: 20px 10px;
-  }
-
-  .titulo-amarillo {
-    font-size: 24px;
-  }
-
-  header p {
-    font-size: 16px;
-    line-height: 1.4;
-  }
-
-  .mensaje-navidad {
-    font-size: 14px;
-  }
-
-  .imagenes-navidad {
-    flex-direction: row;
-    gap: 10px;
-  }
-
-  .imagenes-navidad img {
-    max-width: 45%;
-  }
-
-  table th, table td {
-    font-size: 14px;
-    padding: 8px;
-  }
-
-  .resumen {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-
-  .resumen .dato {
-    flex: 1 1 45%;
-    font-size: 16px;
-  }
-
-  .resumen .dato.total-ahorro {
-    font-size: 18px;
-  }
-
-  .nombre {
-    font-size: 18px;
-  }
-
-  a, button {
-    padding: 12px 18px;
-    font-size: 16px;
-  }
+  .imagenes-navidad img { width: clamp(140px, 45vw, 220px); }
+  th, td { padding: 8px; }
+  .resumen .dato { flex: 1 1 48%; } /* dos columnas en móvil */
 }
